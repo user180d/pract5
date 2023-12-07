@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Lab1";
+}
+@model DataModel
+
+@using (Html.BeginForm("Calculate1", "Lab", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(model => model.input, "Введіть данні для обчислення: ")
+        @Html.TextBoxFor(model => model.input)
+        <input type="submit" value="Обчислити" />
+    </div>
+}
+@if (!string.IsNullOrEmpty(Model.input) && Model.result != null)
+{
+<div>
+    <p>Результат:</p>
+    <ul style="list-style-type: none">
+       
+            @foreach (var item in Model.result)
+            {
+                <li>@item</li>
+            }
+    </ul>
+</div>
+}

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Lab3";
+}
+@model DataModel
+
+@using (Html.BeginForm("Calculate3", "Lab", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(model => model.row, "Enter the number of rows:")
+        @Html.TextBoxFor(model => model.row)
+        @Html.LabelFor(model => model.col, "Enter the number of columns:")
+        @Html.TextBoxFor(model => model.col)
+        <input type="submit" value="Start" />
+    </div>
+    <div>
+        <p>Input Data:</p>
+        <textarea name="Input" style="resize: both; overflow: auto;">@Model.input</textarea>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.input) && Model.result != null)
+{
+    <div>
+        <p>Result:</p>
+        <ul style="list-style-type: none">
+
+            @foreach (var item in Model.result)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+}
